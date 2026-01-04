@@ -29,15 +29,16 @@ public class DiameterOfBinaryTree {
         return maxDiameter;
     }
 
-    private static int calculateHeight(TreeNode root) {
-        if (root == null)
-            return 0;
+    private static int calculateHeight(TreeNode node) {
+        // Recursively get heights of left and right subtrees
+        int leftHeight = calculateHeight(node.left);
+        int rightHeight = calculateHeight(node.right);
 
-        int leftHeight = calculateHeight(root.left);
-        int rightHeight = calculateHeight(root.right);
+        // Update global max diameter: length of path through the current node
+        // (Sum of edges from left and right subtrees)
+        maxDiameter = Math.max(maxDiameter, leftHeight + rightHeight);
 
-        maxDiameter = Math.max(maxDiameter, leftHeight+rightHeight);
-
+        // Return height of current subtree to the parent
         return 1 + Math.max(leftHeight, rightHeight);
     }
 
