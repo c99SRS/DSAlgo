@@ -27,7 +27,7 @@ public class DepthOfBinaryTree {
     private static int findHeightUsingLevelOrder(TreeNode root) {
 
         if (root == null)
-             return 1;
+             return 0;
 
         int level=0;
         Queue<TreeNode> queue = new LinkedList<>();
