@@ -4,7 +4,7 @@ import TreeBinary.TreeNode;
 
 public class DiameterOfBinaryTree {
 
-    static int maxDiameter=0;
+    //static int maxDiameter=0;
 
     public static void main(String[] args) {
         // Creating a sample binary tree
@@ -24,19 +24,25 @@ public class DiameterOfBinaryTree {
     }
 
     private static int diameterOfBinaryTree(TreeNode root) {
-        calculateHeight(root);
 
-        return maxDiameter;
+        int[] maxDiameter = new int[1];
+        calculateHeight(root, maxDiameter);
+
+        return maxDiameter[0];
     }
 
-    private static int calculateHeight(TreeNode node) {
+    private static int calculateHeight(TreeNode node, int[] maxDiameter) {
+
+        if (node == null)
+            return 0;
+
         // Recursively get heights of left and right subtrees
-        int leftHeight = calculateHeight(node.left);
-        int rightHeight = calculateHeight(node.right);
+        int leftHeight = calculateHeight(node.left, maxDiameter);
+        int rightHeight = calculateHeight(node.right, maxDiameter);
 
         // Update global max diameter: length of path through the current node
         // (Sum of edges from left and right subtrees)
-        maxDiameter = Math.max(maxDiameter, leftHeight + rightHeight);
+        maxDiameter[0] = Math.max(maxDiameter[0], leftHeight + rightHeight);
 
         // Return height of current subtree to the parent
         return 1 + Math.max(leftHeight, rightHeight);
