@@ -58,5 +58,13 @@ Right subtree of this TreeNode is identical to the right subtree of the correspo
         return isIdentical(node1.left, node2.left) && isIdentical(node1.right, node2.right) ;
     }
 
+    /*
+      Complexity Analysis
+
+Time Complexity: O(N + M) where N is the number of nodes in the first Binary Tree and M is the number of nodes in the second Binary Tree. This complexity arises from visiting each node of both trees during their comparison.
+
+Space Complexity: O(1) as no additional space or data structures are created that are proportional to the input size of the tree.
+     */
+
 
 }
